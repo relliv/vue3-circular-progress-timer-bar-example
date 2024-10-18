@@ -275,37 +275,45 @@ export default {
         font-color="white"
       ></ve-progress>
 
-      <!-- Timer Inputs -->
-      <div
-        class="editable-timer"
-        style="
-          display: flex;
-          justify-content: center;
-          align-items: center;
-          font-size: 2rem;
-        "
-      >
+      <!-- Editable Timer Container -->
+      <div class="editable-timer-container">
+        <!-- Timer Inputs -->
         <div
-          ref="minutesRef"
-          class="minutes"
-          placeholder="00"
-          :contenteditable="!isTimerRunning"
-          @keydown="onTimerInputKeyDown($event, 'minutes')"
-          @blur="onTimerInputBlur($event, 'minutes')"
+          class="editable-timer"
+          style="
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 2rem;
+          "
         >
-          {{ minutes }}
+          <div
+            ref="minutesRef"
+            class="minutes"
+            placeholder="00"
+            :contenteditable="!isTimerRunning"
+            @keydown="onTimerInputKeyDown($event, 'minutes')"
+            @blur="onTimerInputBlur($event, 'minutes')"
+          >
+            {{ minutes }}
+          </div>
+          <span>:</span>
+          <div
+            ref="secondsRef"
+            class="seconds"
+            placeholder="00"
+            :contenteditable="!isTimerRunning"
+            @keydown="onTimerInputKeyDown($event, 'seconds')"
+            @blur="onTimerInputBlur($event, 'seconds')"
+          >
+            {{ seconds }}
+          </div>
         </div>
-        <span>:</span>
-        <div
-          ref="secondsRef"
-          class="seconds"
-          placeholder="00"
-          :contenteditable="!isTimerRunning"
-          @keydown="onTimerInputKeyDown($event, 'seconds')"
-          @blur="onTimerInputBlur($event, 'seconds')"
-        >
-          {{ seconds }}
-        </div>
+
+        <!-- Paused -->
+        <span class="status">
+          {{ isTimerPaused ? 'Paused' : ' ' }}
+        </span>
       </div>
     </div>
 
@@ -403,15 +411,32 @@ export default {
   user-select: none;
 }
 
-.editable-timer {
-  color: #ffffff;
-  display: flex;
-  flex-direction: row;
-  gap: 2px;
+.editable-timer-container {
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  margin-top: 20px;
+  justify-content: center;
+  align-items: center;
+  color: #fff;
+}
+
+.editable-timer-container .status {
+  font-size: 14px;
+  line-height: 16px;
+  height: 17px;
+}
+
+.editable-timer {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 2px;
 }
 
 .editable-timer .minutes,
