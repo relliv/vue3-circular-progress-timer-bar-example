@@ -409,6 +409,9 @@ export default {
   padding: 3px 5px;
   border-radius: 5px;
   outline: none !important;
+  height: 45px;
+  width: 54px;
+  text-align: center;
 }
 
 .editable-timer .minutes[contenteditable='true'],
