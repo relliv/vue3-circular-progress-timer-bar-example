@@ -139,8 +139,6 @@ export default {
         seconds.value = value.padStart(2, '0').substring(0, 2);
       }
 
-      console.log(minutes.value, seconds.value);
-
       handleTimerLegendUpdate();
       handleTimerProgress();
 
@@ -163,9 +161,9 @@ export default {
         event.preventDefault();
 
         if (timePart === 'minutes') {
-          secondsRef.value.focus();
+          secondsRef?.value?.focus();
         } else if (timePart === 'seconds') {
-          minutesRef.value.focus();
+          minutesRef?.value?.focus();
         }
       }
 
@@ -179,8 +177,6 @@ export default {
         } else if (timePart === 'seconds') {
           seconds.value = value.padStart(2, '0').substring(0, 2);
         }
-
-        console.log(minutes.value, seconds.value);
         
         (event.target as HTMLElement).blur();
         
