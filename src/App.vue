@@ -120,11 +120,11 @@ export default {
       }
     };
 
-    const updateTimeFromEditable = (
+    const onTimerInputBlur = (
       event: FocusEvent,
       timePart: 'minutes' | 'seconds'
     ) => {
-      console.log('updateTimeFromEditable');
+      console.log('onTimerInputBlur');
 
       let value = (event.target as HTMLElement).innerText;
 
@@ -146,11 +146,11 @@ export default {
       progress.value = 0;
     };
 
-    const handleKeyDown = (
+    const onTimerInputKeyDown = (
       event: KeyboardEvent,
       timePart: 'minutes' | 'seconds'
     ) => {
-      console.log('handleKeyDown');
+      console.log('onTimerInputKeyDown');
 
       const value = (event.target as HTMLElement).innerText;
 
@@ -234,8 +234,8 @@ export default {
       isTimerPaused,
       handleStartPause,
       stopTimer,
-      updateTimeFromEditable,
-      handleKeyDown,
+      onTimerInputBlur,
+      onTimerInputKeyDown,
       minutesRef,
       secondsRef,
       onTimerInputFocus,
@@ -266,6 +266,7 @@ export default {
         font-color="white"
       ></ve-progress>
 
+      <!-- Timer Inputs -->
       <div
         class="editable-timer"
         style="
@@ -278,9 +279,10 @@ export default {
         <div
           ref="minutesRef"
           class="minutes"
+          placeholder="00"
           :contenteditable="!isTimerRunning"
-          @keydown="handleKeyDown($event, 'minutes')"
-          @blur="updateTimeFromEditable($event, 'minutes')"
+          @keydown="onTimerInputKeyDown($event, 'minutes')"
+          @blur="onTimerInputBlur($event, 'minutes')"
         >
           {{ minutes }}
         </div>
@@ -288,9 +290,10 @@ export default {
         <div
           ref="secondsRef"
           class="seconds"
+          placeholder="00"
           :contenteditable="!isTimerRunning"
-          @keydown="handleKeyDown($event, 'seconds')"
-          @blur="updateTimeFromEditable($event, 'seconds')"
+          @keydown="onTimerInputKeyDown($event, 'seconds')"
+          @blur="onTimerInputBlur($event, 'seconds')"
         >
           {{ seconds }}
         </div>
