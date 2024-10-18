@@ -65,7 +65,9 @@ export default {
     const startTimer = () => {
       clearInterval(timer);
 
-      if (currentTime.value <= 0) {
+      if (currentTime.value === -1) {
+        currentTime.value = initialTime.value;
+      } else if (currentTime.value === 0) {
         minutes.value = '00';
         seconds.value = '00';
 
@@ -106,6 +108,7 @@ export default {
       isTimerRunning.value = false;
       isTimerPaused.value = false;
       progress.value = 0;
+      currentTime.value = -1;
       isFinished.value = true;
 
       formatTime(initialTime.value);
@@ -479,7 +482,6 @@ export default {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  gap: 20px;
   width: 100%;
 }
 
@@ -491,6 +493,7 @@ export default {
   align-items: center;
   color: #fff;
   font-size: 14px;
+  width: 30%;
 }
 
 .actions .action.disabled {
