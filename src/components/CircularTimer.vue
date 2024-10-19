@@ -324,10 +324,10 @@ onUnmounted(() => {
       <div
         class="action"
         :class="{
-          disabled: !isTimerRunning,
+          disabled: isFinished,
         }"
       >
-        <button @click="stopTimer" :disabled="!isTimerRunning">
+        <button @click="stopTimer" :disabled="isFinished">
           <IconPlayerStopFilled />
         </button>
 
