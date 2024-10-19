@@ -1,0 +1,13 @@
+.timer-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 50px;
+    align-items: center;
+}
+  
+.circular-timer-container {
+    display: flex;
+    position: relative;
+    user-select: none;
+}

@@ -1,0 +1,57 @@
+.editable-timer-container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    margin-top: 20px;
+    justify-content: center;
+    align-items: center;
+    color: #fff;
+  }
+  
+  .editable-timer-container .status {
+    font-size: 14px;
+    line-height: 16px;
+    height: 17px;
+  }
+  
+  .editable-timer {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 2px;
+  }
+  
+  .editable-timer .minutes,
+  .editable-timer .seconds {
+    font-weight: 500;
+    font-size: 40px;
+    padding: 3px 5px;
+    border-radius: 5px;
+    outline: none !important;
+    height: 45px;
+    width: 54px;
+    text-align: center;
+  }
+  
+  .editable-timer .minutes[contenteditable='true'],
+  .editable-timer .seconds[contenteditable='true'] {
+    background-color: #1d1b27;
+  }
+  
+  .editable-timer .minutes[contenteditable='true']:hover,
+  .editable-timer .seconds[contenteditable='true']:hover {
+    font-weight: 500;
+    font-size: 40px;
+    background-color: #292639;
+    transition: all 0.2s ease-in-out;
+  }
+  
+  .editable-timer .minutes:focus,
+  .editable-timer .seconds:focus {
+    background-color: #292639;
+  }
