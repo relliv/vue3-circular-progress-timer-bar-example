@@ -301,13 +301,8 @@ onUnmounted(() => {
     <!-- Timer Actions -->
     <div class="actions">
       <!-- Start / Pausee -->
-      <div
-        class="action"
-        :class="{
-          disabled: isFinished,
-        }"
-      >
-        <button @click="handleStartPause" :disabled="isFinished">
+      <div class="action">
+        <button @click="handleStartPause">
           <!-- Pause -->
           <IconPlayerPauseFilled v-if="isTimerRunning"/>
 
