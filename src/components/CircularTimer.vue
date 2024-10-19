@@ -17,49 +17,7 @@ let initialTime = ref(600),
 const minutesRef = ref<HTMLElement | null>(null),
   secondsRef = ref<HTMLElement | null>(null);
 
-const handleTimerProgress = () => {
-  progress.value = Math.min(
-    (initialTime.value - currentTime.value) * increment.value,
-    100
-  );
-
-  console.log('initialTime.value', initialTime.value);
-  console.log('currentTime.value', currentTime.value);
-  console.log('increment', increment);
-  console.log('progress', progress.value);
-
-  formatTime(currentTime.value);
-};
-
-const handleTimerLegendUpdate = () => {
-  const newTime = parseTimeInput(`${minutes.value}:${seconds.value}`);
-
-  console.log('handleTimerLegendUpdate', newTime);
-
-  currentTime.value = newTime;
-  initialTime.value = newTime;
-};
-
-const parseTimeInput = (timeString: string) => {
-  const [minutes, seconds] = timeString.split(':').map(Number);
-
-  return minutes * 60 + seconds;
-};
-
-const formatTime = (totalSeconds: number) => {
-  if (totalSeconds <= 0) {
-    minutes.value = '00';
-    seconds.value = '00';
-
-    isFinished.value = true;
-  }
-
-  const minutesPart = Math.floor(totalSeconds / 60),
-    secondsPart = totalSeconds % 60;
-
-  minutes.value = String(minutesPart).padStart(2, '0');
-  seconds.value = String(secondsPart).padStart(2, '0');
-};
+// #region Timer
 
 const startTimer = () => {
   clearInterval(timer);
@@ -122,6 +80,10 @@ const handleStartPause = () => {
     startTimer();
   }
 };
+
+// #endregion
+
+// #region Timer Input Events
 
 const onTimerInputBlur = (
   event: FocusEvent,
@@ -205,22 +167,65 @@ const onTimerInputKeyDown = (
   }
 };
 
-const onTimerInputFocus = (event: MouseEvent): void => {
-  var range = document.createRange(),
-    selection = window.getSelection();
+// #endregion
 
-  range.setStart(event.target.childNodes[0], 0);
-  range.collapse(true);
-
-  selection?.removeAllRanges();
-  selection?.addRange(range);
-};
+// #region Global Events
 
 const handleGlobalKeydownEventHandler = (event: KeyboardEvent) => {
   if (event.key == ' ' || event.code == 'Space' || event.keyCode == 32) {
     handleStartPause();
   }
 };
+
+// #endregion
+
+// #region Helpers
+
+const handleTimerProgress = () => {
+  progress.value = Math.min(
+    (initialTime.value - currentTime.value) * increment.value,
+    100
+  );
+
+  console.log('initialTime.value', initialTime.value);
+  console.log('currentTime.value', currentTime.value);
+  console.log('increment', increment);
+  console.log('progress', progress.value);
+
+  formatTime(currentTime.value);
+};
+
+const handleTimerLegendUpdate = () => {
+  const newTime = parseTimeInput(`${minutes.value}:${seconds.value}`);
+
+  console.log('handleTimerLegendUpdate', newTime);
+
+  currentTime.value = newTime;
+  initialTime.value = newTime;
+};
+
+const parseTimeInput = (timeString: string) => {
+  const [minutes, seconds] = timeString.split(':').map(Number);
+
+  return minutes * 60 + seconds;
+};
+
+const formatTime = (totalSeconds: number) => {
+  if (totalSeconds <= 0) {
+    minutes.value = '00';
+    seconds.value = '00';
+
+    isFinished.value = true;
+  }
+
+  const minutesPart = Math.floor(totalSeconds / 60),
+    secondsPart = totalSeconds % 60;
+
+  minutes.value = String(minutesPart).padStart(2, '0');
+  seconds.value = String(secondsPart).padStart(2, '0');
+};
+
+// #endregion
 
 onMounted(() => {
   currentTime.value = initialTime.value;
