@@ -3,9 +3,7 @@ import CircularTimer from './components/CircularTimer.vue';
 </script>
 
 <template>
-  <div>
-    <CircularTimer />
-  </div>
+  <CircularTimer />
 </template>
 
 <style scoped></style>
