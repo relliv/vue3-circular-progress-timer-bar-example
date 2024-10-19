@@ -5,6 +5,9 @@ settings:
   excludeLinksFromLockfile: false
 
 dependencies:
+  '@tabler/icons-vue':
+    specifier: ^3.19.0
+    version: 3.19.0(vue@3.5.12)
   vue:
     specifier: ^3.5.12
     version: 3.5.12(typescript@5.6.3)
@@ -388,6 +391,19 @@ packages:
     requiresBuild: true
     dev: true
     optional: true
+
+  /@tabler/icons-vue@3.19.0(vue@3.5.12):
+    resolution: {integrity: sha512-H9gGYvZIPCUQprHz+8qPx8MSKf28WHpiIX1lHmxckUS06P63LnTMwsvx+KCcMBEhMrdSxlIqk6fb+xR+61yVOQ==}
+    peerDependencies:
+      vue: '>=3.0.1'
+    dependencies:
+      '@tabler/icons': 3.19.0
+      vue: 3.5.12(typescript@5.6.3)
+    dev: false
+
+  /@tabler/icons@3.19.0:
+    resolution: {integrity: sha512-A4WEWqpdbTfnpFEtwXqwAe9qf9sp1yRPvzppqAuwcoF0q5YInqB+JkJtSFToCyBpPVeLxJUxxkapLvt2qQgnag==}
+    dev: false
 
   /@types/estree@1.0.6:
     resolution: {integrity: sha512-AYnb1nQyY49te+VRAVgmzfcgjYS91mY5P0TKUDCLEM+gNnA+3T6rWITXRLYCpahpqSQbN5cE+gHpnPyXjHWxcw==}

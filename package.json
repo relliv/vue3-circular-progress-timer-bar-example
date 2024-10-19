@@ -9,6 +9,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@tabler/icons-vue": "^3.19.0",
     "vue": "^3.5.12",
     "vue-ellipse-progress": "^2.2.0"
   },
